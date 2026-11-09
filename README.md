@@ -70,9 +70,9 @@ aditya-portfolio/
 
 ## 🚀 Running Locally
 
-1. **Clone or navigate to the directory**:
+1. **Navigate to the directory**:
    ```bash
-   cd /Users/adityaranjan/.gemini/antigravity/scratch/aditya-portfolio
+   cd ~/aditya-portfolio
    ```
 
 2. **Install dependencies** (already pre-installed):
@@ -107,16 +107,7 @@ You never need to touch complex layout code to update your info. Simply open:
 
 1. Open your terminal in the project directory:
    ```bash
-   cd /Users/adityaranjan/.gemini/antigravity/scratch/aditya-portfolio
-   git init
-   git add .
-   git commit -m "Initial commit: Aditya Ranjan personal portfolio"
-   ```
-
-2. Create a new repository on your GitHub account (`adityaranjandp28-web`) named `portfolio` (or `aditya-portfolio`).
-
-3. Link and push to GitHub:
-   ```bash
+   cd ~/aditya-portfolio
    git remote add origin https://github.com/adityaranjandp28-web/aditya-portfolio.git
    git branch -M main
    git push -u origin main
