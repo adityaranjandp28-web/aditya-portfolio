@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
   images: {
-    unoptimized: true, // Allows smooth export / zero configuration on Vercel or static hosting
+    unoptimized: true,
   },
 };
 
