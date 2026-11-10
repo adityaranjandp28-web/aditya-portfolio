@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aditya Ranjan | Aspiring AI/ML Developer & UI/UX Enthusiast</title>
+  <meta name="description" content="Personal portfolio of Aditya Ranjan — Computer Science student at Bennett University exploring artificial intelligence, machine learning, data analytics, and visual UI/UX design.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -17,173 +20,343 @@
         extend: {
           colors: {
             dark: {
-              bg: '#0d0f14',
-              surface: '#111318',
-              card: '#171a22',
-              border: '#232836',
-              muted: '#9299A5',
-              text: '#F5F5F5',
+              bg: '#0c0d12',
+              surface: '#12141c',
+              card: '#171a24',
+              border: '#232838',
+              muted: '#949ba8',
+              text: '#f8fafc',
             },
             light: {
-              bg: '#F5F5F5',
-              surface: '#FFFFFF',
-              card: '#F0F2F5',
-              border: '#E2E5EA',
-              muted: '#6B7280',
-              text: '#111318',
+              bg: '#f8fafc',
+              surface: '#ffffff',
+              card: '#f1f5f9',
+              border: '#e2e8f0',
+              muted: '#64748b',
+              text: '#0f172a',
             },
             accent: {
-              DEFAULT: '#2563EB',
-              light: '#3B82F6',
-              dark: '#1D4ED8',
+              DEFAULT: '#2563eb',
+              light: '#3b82f6',
+              dark: '#1d4ed8',
+              glow: 'rgba(37, 99, 235, 0.25)',
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           }
         }
       }
     }
   </script>
   <style>
-    ::selection { background-color: #2563EB; color: #ffffff; }
+    ::selection { background-color: #2563eb; color: #ffffff; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
     .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+    .glass-nav {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .badge-glow {
+      box-shadow: 0 0 20px -3px rgba(37, 99, 235, 0.35);
+    }
   </style>
 </head>
-<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans relative antialiased">
+<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans relative antialiased selection:bg-accent selection:text-white">
 
-  <!-- Interactive Neural Canvas -->
-  <canvas id="neuralCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-50 dark:opacity-40"></canvas>
+  <!-- Interactive Neural Background Canvas -->
+  <canvas id="neuralCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-35"></canvas>
 
-  <!-- Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-light-bg/85 dark:bg-dark-bg/85 backdrop-blur-md border-b border-light-border dark:border-dark-border py-3.5 transition-all">
-    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-md bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border flex items-center justify-center font-mono text-xs font-semibold tracking-wider text-accent">
+  <!-- Sticky Minimalist Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav bg-light-bg/85 dark:bg-dark-bg/85 border-b border-light-border dark:border-dark-border py-3.5 transition-all">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 flex items-center justify-between">
+      
+      <!-- Monogram Brand -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-lg bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border flex items-center justify-center font-mono text-xs font-bold tracking-wider text-accent group-hover:border-accent transition-colors shadow-xs">
           AR
         </div>
-        <span class="font-medium tracking-tight text-sm hidden sm:inline-block">Aditya Ranjan</span>
+        <div class="flex flex-col">
+          <span class="font-bold tracking-tight text-sm text-light-text dark:text-dark-text group-hover:text-accent transition-colors">Aditya Ranjan</span>
+          <span class="text-[10px] font-mono text-light-muted dark:text-dark-muted hidden sm:inline-block">AI/ML • Bennett Univ.</span>
+        </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-1 bg-light-surface/80 dark:bg-dark-surface/60 border border-light-border dark:border-dark-border px-3 py-1.5 rounded-full backdrop-blur-sm text-xs font-medium">
-        <a href="#about" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">About</a>
-        <a href="#skills" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">Skills</a>
-        <a href="#projects" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">Projects</a>
-        <a href="#creative" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">Creative</a>
-        <a href="#journey" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">Journey</a>
-        <a href="#contact" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors">Contact</a>
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 bg-light-surface/80 dark:bg-dark-surface/70 border border-light-border dark:border-dark-border px-3.5 py-1.5 rounded-full backdrop-blur-sm text-xs font-medium">
+        <a href="#about" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">About</a>
+        <a href="#skills" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">Skills</a>
+        <a href="#projects" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">Projects</a>
+        <a href="#creative" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">Creative</a>
+        <a href="#journey" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">Journey</a>
+        <a href="#contact" class="px-3 py-1 rounded-full text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">Contact</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1 text-xs font-medium text-light-muted dark:text-dark-muted hover:text-accent px-2.5 py-1.5 rounded-md hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors">
-          <span>Design Archive</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+      <!-- Primary Action Buttons: Design Archive + Resume + Theme Toggle -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        
+        <!-- PROMINENT DESIGN ARCHIVE BUTTON -->
+        <a 
+          href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full border border-accent/40 bg-accent/10 hover:bg-accent text-accent hover:text-white text-xs font-semibold transition-all duration-200 shadow-xs"
+          title="Open Google Sites Visual & Design Archive"
+        >
+          <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+          <span class="hidden xs:inline">Design Archive</span>
+          <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
         </a>
 
+        <!-- PROMINENT RESUME BUTTON -->
+        <a 
+          href="./Aditya_Ranjan_Resume.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface hover:border-accent text-light-text dark:text-dark-text hover:text-accent text-xs font-medium transition-all shadow-xs"
+          title="View & Download Aditya Ranjan's Resume (PDF)"
+        >
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-accent"></i>
+          <span>Resume</span>
+        </a>
+
+        <!-- Theme Toggle -->
         <button id="themeToggle" class="p-2 rounded-lg border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface hover:border-accent text-light-text dark:text-dark-text transition-colors" aria-label="Toggle theme">
           <i data-lucide="sun" id="sunIcon" class="w-4 h-4 text-amber-400 hidden"></i>
           <i data-lucide="moon" id="moonIcon" class="w-4 h-4 text-accent"></i>
         </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text" aria-label="Toggle mobile menu">
+          <i data-lucide="menu" id="menuIcon" class="w-4 h-4"></i>
+          <i data-lucide="x" id="closeIcon" class="w-4 h-4 hidden"></i>
+        </button>
       </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden lg:hidden border-b border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface px-6 py-4 shadow-xl">
+      <nav class="flex flex-col gap-2 text-sm font-medium">
+        <a href="#about" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">About Me</a>
+        <a href="#skills" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">Skills & Technologies</a>
+        <a href="#projects" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">Featured Projects</a>
+        <a href="#creative" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">Creative & Visual Art</a>
+        <a href="#journey" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">Education & Journey</a>
+        <a href="#contact" class="py-2 text-light-muted dark:text-dark-muted hover:text-accent">Contact</a>
+        <div class="pt-3 border-t border-light-border dark:border-dark-border flex flex-col gap-2">
+          <a href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1" target="_blank" class="flex items-center justify-between p-2.5 rounded-lg bg-accent/10 text-accent font-semibold text-xs">
+            <span class="flex items-center gap-2"><i data-lucide="palette" class="w-4 h-4"></i> Open Google Sites Design Archive</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="./Aditya_Ranjan_Resume.pdf" target="_blank" class="flex items-center justify-between p-2.5 rounded-lg border border-light-border dark:border-dark-border text-xs font-semibold">
+            <span class="flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-accent"></i> Download Resume (PDF)</span>
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <main class="relative z-10">
-    <!-- Hero Section -->
-    <section class="min-h-[90vh] flex items-center pt-28 pb-16 px-6">
-      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+    <!-- HERO SECTION -->
+    <section class="min-h-[92vh] flex items-center pt-28 pb-16 px-6 sm:px-8 overflow-hidden">
+      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Editorial Copy (7 cols) -->
         <div class="lg:col-span-7 flex flex-col items-start">
-          <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border bg-light-surface/90 dark:bg-dark-surface/90 text-xs font-mono mb-6 shadow-xs">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            <span class="text-light-muted dark:text-dark-muted">Available for internships & collaborations</span>
+          
+          <!-- Availability Pill & Direct Design Archive Badge -->
+          <div class="flex flex-wrap items-center gap-2.5 mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border bg-light-surface/90 dark:bg-dark-surface/90 text-xs font-mono backdrop-blur-sm shadow-xs">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              <span class="text-light-muted dark:text-dark-muted">Bennett University (2026–2030)</span>
+            </div>
+
+            <!-- Standout Top Badge for Design Archive -->
+            <a 
+              href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-accent/40 bg-accent/10 hover:bg-accent/20 text-accent text-xs font-mono font-medium transition-all group"
+            >
+              <i data-lucide="sparkles" class="w-3 h-3 text-accent group-hover:rotate-12 transition-transform"></i>
+              <span>Visual Design Archive</span>
+              <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+            </a>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-light-text dark:text-dark-text leading-[1.1] mb-4">
+          <!-- Main Heading -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-light-text dark:text-dark-text leading-[1.08] mb-4">
             Hey, I'm <span class="text-accent underline decoration-accent/30 underline-offset-8">Aditya Ranjan</span>.
           </h1>
 
-          <p class="text-lg sm:text-xl font-medium text-light-text/90 dark:text-dark-text/90 leading-snug mb-5 max-w-xl">
+          <!-- Professional Subtitle -->
+          <p class="text-lg sm:text-xl font-semibold text-light-text/90 dark:text-dark-text/90 leading-snug mb-5 max-w-xl">
             An aspiring AI/ML developer with a passion for UI/UX and visual design.
           </p>
 
+          <!-- Supporting Description -->
           <p class="text-sm sm:text-base text-light-muted dark:text-dark-muted leading-relaxed mb-8 max-w-xl font-normal">
             I explore the intersection of intelligent technology and creative design, building experiences that are functional, intuitive, and visually meaningful.
           </p>
 
-          <div class="flex flex-wrap items-center gap-3.5 mb-10">
-            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent text-white font-medium text-sm hover:bg-accent-dark transition-all shadow-sm">
+          <!-- CTA BUTTONS CLUSTER (View Work, Design Archive, Resume, Get in Touch) -->
+          <div class="flex flex-wrap items-center gap-3 mb-10 w-full sm:w-auto">
+            
+            <!-- 1. View My Work -->
+            <a
+              href="#projects"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-white font-semibold text-sm hover:bg-accent-dark transition-all duration-200 shadow-sm hover:shadow-accent/25 hover:shadow-md active:scale-98"
+            >
               <span>View My Work</span>
               <i data-lucide="arrow-down" class="w-4 h-4"></i>
             </a>
 
-            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text font-medium text-sm hover:border-accent hover:text-accent transition-all">
-              <span>Get In Touch</span>
+            <!-- 2. HIGHLY VISIBLE DESIGN ARCHIVE BUTTON -->
+            <a
+              href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border-2 border-accent/60 bg-accent/10 hover:bg-accent hover:text-white text-accent font-semibold text-sm transition-all duration-200 active:scale-98 shadow-xs"
+            >
+              <i data-lucide="palette" class="w-4 h-4"></i>
+              <span>Design Archive</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+
+            <!-- 3. PROMINENT RESUME BUTTON -->
+            <a
+              href="./Aditya_Ranjan_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface hover:border-accent text-light-text dark:text-dark-text hover:text-accent font-medium text-sm transition-all duration-200 active:scale-98"
+              title="Open Official Resume PDF"
+            >
+              <i data-lucide="file-text" class="w-4 h-4 text-accent"></i>
+              <span>Resume (PDF)</span>
+            </a>
+
+            <!-- 4. Contact -->
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text text-sm font-medium transition-all"
+            >
               <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>Contact</span>
             </a>
           </div>
 
-          <div class="flex items-center gap-5 pt-6 border-t border-light-border dark:border-dark-border/80 w-full max-w-md">
-            <span class="text-xs font-mono uppercase tracking-widest text-light-muted dark:text-dark-muted">Connect</span>
+          <!-- Social Proof & Direct Channels -->
+          <div class="flex items-center gap-5 pt-6 border-t border-light-border dark:border-dark-border/80 w-full max-w-lg">
+            <span class="text-xs font-mono uppercase tracking-widest text-light-muted dark:text-dark-muted">
+              Connect
+            </span>
             <div class="h-3 w-px bg-light-border dark:bg-dark-border"></div>
             
-            <a href="https://github.com/adityaranjandp28-web" target="_blank" rel="noopener noreferrer" class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors">
+            <a
+              href="https://github.com/adityaranjandp28-web"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors"
+            >
               <i data-lucide="github" class="w-4 h-4"></i>
             </a>
-            <a href="https://www.linkedin.com/in/aditya-ranjan-393" target="_blank" rel="noopener noreferrer" class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors">
+
+            <a
+              href="https://www.linkedin.com/in/aditya-ranjan-393"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors"
+            >
               <i data-lucide="linkedin" class="w-4 h-4"></i>
             </a>
-            <a href="mailto:adityaranjandp28@gmail.com" class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors">
+
+            <a
+              href="mailto:adityaranjandp28@gmail.com"
+              aria-label="Send Email"
+              class="p-1.5 text-light-muted dark:text-dark-muted hover:text-accent transition-colors"
+            >
               <i data-lucide="mail" class="w-4 h-4"></i>
             </a>
+
+            <span class="text-xs text-light-muted dark:text-dark-muted font-mono ml-auto">
+              Patna &amp; Greater Noida, India
+            </span>
           </div>
+
         </div>
 
-        <!-- Profile Photo -->
+        <!-- Right Photo Frame (5 cols) -->
         <div class="lg:col-span-5 flex justify-center lg:justify-end">
           <div class="relative group w-full max-w-xs sm:max-w-sm">
-            <div class="absolute -inset-2.5 rounded-2xl border border-light-border dark:border-dark-border pointer-events-none opacity-60"></div>
-            <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-accent"></div>
-            <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-accent"></div>
+            
+            <!-- Architectural Corner Markers -->
+            <div class="absolute -inset-2.5 rounded-2xl border border-light-border dark:border-dark-border pointer-events-none opacity-60 group-hover:border-accent/40 transition-colors"></div>
+            <div class="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-accent"></div>
+            <div class="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-accent"></div>
 
+            <!-- Photo Container -->
             <div class="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border shadow-xl">
-              <img src="./public/images/aditya.jpg" alt="Aditya Ranjan" class="w-full h-full object-cover object-center grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700">
-              <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/85 via-transparent to-transparent opacity-70"></div>
-              
-              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-dark-surface/90 backdrop-blur-md border border-white/10 text-white text-xs flex items-center justify-between">
+              <img
+                src="./public/images/aditya.jpg"
+                alt="Aditya Ranjan - Bennett University"
+                class="w-full h-full object-cover object-center grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700 ease-out"
+              >
+
+              <!-- Subtle vignette gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/90 via-dark-bg/20 to-transparent opacity-75"></div>
+
+              <!-- Bottom Profile Pill -->
+              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-dark-surface/90 backdrop-blur-md border border-white/10 text-white text-xs flex items-center justify-between">
                 <div>
-                  <div class="font-semibold tracking-tight">Aditya Ranjan</div>
-                  <div class="text-[11px] text-neutral-400 font-mono">B.Tech CSE • Bennett Univ.</div>
+                  <div class="font-bold tracking-tight text-sm">Aditya Ranjan</div>
+                  <div class="text-[11px] text-neutral-400 font-mono">B.Tech Computer Science</div>
                 </div>
-                <div class="w-6 h-6 rounded-md bg-accent/20 border border-accent/40 flex items-center justify-center text-accent">
+                <div class="w-7 h-7 rounded-lg bg-accent/20 border border-accent/40 flex items-center justify-center text-accent">
                   <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
                 </div>
               </div>
             </div>
+
+            <!-- Status Chip -->
+            <div class="absolute -bottom-3 -right-3 hidden sm:flex items-center gap-2 px-3 py-1 rounded-md bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border text-[11px] font-mono text-light-muted dark:text-dark-muted shadow-md">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Bennett Univ • 2026–2030
+            </div>
+
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 border-t border-light-border dark:border-dark-border/80">
+
+    <!-- 01 // ABOUT SECTION & RESUME HIGHLIGHT -->
+    <section id="about" class="py-24 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80">
       <div class="max-w-6xl mx-auto">
+        
         <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
           <span class="w-6 h-px bg-accent"></span>
           <span>01 / Perspective</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-light-text dark:text-dark-text mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-light-text dark:text-dark-text mb-12">
           A little about me.
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Narrative Column (7 cols) -->
           <div class="lg:col-span-7 space-y-6 text-base sm:text-lg text-light-muted dark:text-dark-muted leading-relaxed font-normal">
-            <p class="text-lg sm:text-xl font-medium text-light-text dark:text-dark-text leading-snug">
+            <p class="text-lg sm:text-xl font-semibold text-light-text dark:text-dark-text leading-snug">
               I'm a Computer Science Engineering student at Bennett University, exploring the world of artificial intelligence, machine learning, and software development.
             </p>
             <p>
@@ -193,311 +366,565 @@
               I'm constantly learning, experimenting, and turning ideas into projects.
             </p>
 
+            <!-- Quick Specs Badges -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-light-border dark:border-dark-border">
               <div class="p-4 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface/60">
-                <div class="text-xs font-mono text-accent mb-1">Academic Standing</div>
-                <div class="text-sm font-semibold text-light-text dark:text-dark-text">Bennett University</div>
-                <div class="text-xs text-light-muted dark:text-dark-muted">B.Tech CSE (2026–2030)</div>
+                <div class="flex items-center gap-1.5 text-xs font-mono text-accent mb-1">
+                  <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                  <span>Academic Standing</span>
+                </div>
+                <div class="text-sm font-bold text-light-text dark:text-dark-text">Bennett University</div>
+                <div class="text-xs text-light-muted dark:text-dark-muted mt-0.5">B.Tech CSE (2026–2030 Expected)</div>
               </div>
+
               <div class="p-4 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface/60">
-                <div class="text-xs font-mono text-accent mb-1">Geographic Base</div>
-                <div class="text-sm font-semibold text-light-text dark:text-dark-text">India</div>
-                <div class="text-xs text-light-muted dark:text-dark-muted">Greater Noida & Patna</div>
+                <div class="flex items-center gap-1.5 text-xs font-mono text-accent mb-1">
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  <span>Geographic Base</span>
+                </div>
+                <div class="text-sm font-bold text-light-text dark:text-dark-text">Patna &amp; Greater Noida</div>
+                <div class="text-xs text-light-muted dark:text-dark-muted mt-0.5">India</div>
               </div>
             </div>
           </div>
 
-          <div class="lg:col-span-5 p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface/80">
-            <div class="text-xs font-mono tracking-wider uppercase text-light-muted dark:text-dark-muted mb-5">Guiding Philosophy</div>
-            <div class="space-y-4 text-xs">
-              <div class="p-3 rounded-lg border border-light-border dark:border-dark-border bg-light-card/40 dark:bg-dark-card/40">
-                <div class="font-semibold text-light-text dark:text-dark-text mb-0.5">Technology + Intelligence + Creativity</div>
-                <div class="text-light-muted dark:text-dark-muted leading-relaxed">Harmonizing algorithms with clean, human-centered aesthetics.</div>
+          <!-- Right Column: Official Resume Card & Philosophy (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- RESUME PREVIEW & DOWNLOAD CARD -->
+            <div class="p-6 rounded-2xl border-2 border-accent/40 bg-accent/5 dark:bg-dark-surface/90 relative overflow-hidden shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-accent text-white font-bold">
+                  OFFICIAL RESUME
+                </span>
+                <span class="text-xs font-mono text-light-muted dark:text-dark-muted">1-Page PDF</span>
               </div>
-              <div class="p-3 rounded-lg border border-light-border dark:border-dark-border bg-light-card/40 dark:bg-dark-card/40">
-                <div class="font-semibold text-light-text dark:text-dark-text mb-0.5">Authentic Growth</div>
-                <div class="text-light-muted dark:text-dark-muted leading-relaxed">Focusing on genuine skill development, experimentation, and real projects.</div>
+
+              <h3 class="text-lg font-bold text-light-text dark:text-dark-text mb-1">
+                Aditya Ranjan — Resume
+              </h3>
+              <p class="text-xs text-light-muted dark:text-dark-muted mb-5 leading-relaxed">
+                Highlights academic background, Microsoft Hackathon participation, Power BI interactive dashboard project, and design skills.
+              </p>
+
+              <div class="flex flex-wrap items-center gap-2.5">
+                <a
+                  href="./Aditya_Ranjan_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-semibold hover:bg-accent-dark transition-all shadow-xs"
+                >
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>View Resume</span>
+                </a>
+
+                <a
+                  href="./Aditya_Ranjan_Resume.pdf"
+                  download="Aditya_Ranjan_Resume.pdf"
+                  class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-xs font-semibold hover:border-accent hover:text-accent transition-all"
+                  title="Download PDF directly"
+                >
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                  <span>Download</span>
+                </a>
               </div>
             </div>
+
+            <!-- Guiding Philosophy Card -->
+            <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface/70">
+              <div class="text-xs font-mono tracking-wider uppercase text-light-muted dark:text-dark-muted mb-3">
+                Guiding Mindset
+              </div>
+              <p class="text-xs text-light-text/90 dark:text-dark-text/90 leading-relaxed font-mono">
+                &ldquo;Technology + Intelligence + Creativity. Combining computational curiosity with refined visual craftsmanship.&rdquo;
+              </p>
+            </div>
+
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6 border-t border-light-border dark:border-dark-border/80 bg-light-card/40 dark:bg-dark-card/20">
+
+    <!-- 02 // SKILLS & TECHNOLOGIES -->
+    <section id="skills" class="py-24 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80 bg-light-card/40 dark:bg-dark-card/20">
       <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
-          <span class="w-6 h-px bg-accent"></span>
-          <span>02 / Capabilities</span>
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
+              <span className="w-6 h-px bg-accent"></span>
+              <span>02 / Capabilities</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-light-text dark:text-dark-text">
+              Skills &amp; Technologies
+            </h2>
+          </div>
+
+          <p class="text-xs font-mono text-light-muted dark:text-dark-muted max-w-sm">
+            Disciplined distinction between core focus areas and active algorithmic exploration.
+          </p>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-light-text dark:text-dark-text mb-12">
-          Skills & Technologies
-        </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Programming -->
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <h3 class="text-base font-semibold text-light-text dark:text-dark-text mb-1">Programming & Development</h3>
-            <p class="text-xs text-light-muted dark:text-dark-muted mb-6">Core programming languages used to build software applications.</p>
-            <div class="space-y-2.5">
+          
+          <!-- 1. Programming & Development -->
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                <i data-lucide="code-2" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-light-text dark:text-dark-text">Programming &amp; Development</h3>
+            </div>
+            <p class="text-xs text-light-muted dark:text-dark-muted mb-5">Core languages supporting algorithmic problem solving and web systems.</p>
+            <div class="space-y-2">
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Python</span> <span class="text-light-muted dark:text-dark-muted ml-2">Problem-solving & ML experimentation</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Python</span> <span class="text-light-muted dark:text-dark-muted ml-2">Algorithmic logic &amp; ML experiments</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">C++</span> <span class="text-light-muted dark:text-dark-muted ml-2">Data structures & OOP</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">C++</span> <span class="text-light-muted dark:text-dark-muted ml-2">Data structures, OOP &amp; computation</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">HTML & CSS</span> <span class="text-light-muted dark:text-dark-muted ml-2">Semantic structure & styling</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">HTML5 &amp; CSS3</span> <span class="text-light-muted dark:text-dark-muted ml-2">Semantic layout &amp; responsive styling</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">JavaScript</span> <span class="text-light-muted dark:text-dark-muted ml-2">Modern ES6+ interactivity</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-sky-500/10 border border-sky-500/30 text-sky-500">Developing</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">JavaScript</span> <span class="text-light-muted dark:text-dark-muted ml-2">Modern ES6+ DOM interactivity</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-sky-500/10 border border-sky-500/30 text-sky-500 font-semibold">Developing</span>
               </div>
             </div>
           </div>
 
-          <!-- AI & Data -->
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <h3 class="text-base font-semibold text-light-text dark:text-dark-text mb-1">AI & Data</h3>
-            <p class="text-xs text-light-muted dark:text-dark-muted mb-6">Analytical tools and machine learning domains actively explored.</p>
-            <div class="space-y-2.5">
+          <!-- 2. AI & Data -->
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-light-text dark:text-dark-text">AI &amp; Data</h3>
+            </div>
+            <p class="text-xs text-light-muted dark:text-dark-muted mb-5">Analytical frameworks and machine learning domains actively explored.</p>
+            <div class="space-y-2">
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Power BI</span> <span class="text-light-muted dark:text-dark-muted ml-2">Interactive dashboards & KPI modeling</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Power BI</span> <span class="text-light-muted dark:text-dark-muted ml-2">Interactive dashboards &amp; KPI modeling</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Data Analytics</span> <span class="text-light-muted dark:text-dark-muted ml-2">Trend analysis & visual summaries</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Data Analytics</span> <span class="text-light-muted dark:text-dark-muted ml-2">Trend analysis &amp; visual summaries</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Artificial Intelligence</span> <span class="text-light-muted dark:text-dark-muted ml-2">Foundations & modern paradigms</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-amber-500">Exploring</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Artificial Intelligence</span> <span class="text-light-muted dark:text-dark-muted ml-2">Foundations &amp; problem modeling</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-amber-500 font-semibold">Exploring</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Machine Learning</span> <span class="text-light-muted dark:text-dark-muted ml-2">Predictive models & classification</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-amber-500">Exploring</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Machine Learning</span> <span class="text-light-muted dark:text-dark-muted ml-2">Predictive models &amp; classification</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-amber-500 font-semibold">Exploring</span>
               </div>
             </div>
           </div>
 
-          <!-- Design -->
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <h3 class="text-base font-semibold text-light-text dark:text-dark-text mb-1">Design</h3>
-            <p class="text-xs text-light-muted dark:text-dark-muted mb-6">Crafting user-centered digital artifacts and visual layouts.</p>
-            <div class="space-y-2.5">
+          <!-- 3. Design -->
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-light-text dark:text-dark-text">Design &amp; Visual Communication</h3>
+            </div>
+            <p class="text-xs text-light-muted dark:text-dark-muted mb-5">Crafting human-centered digital interfaces and editorial visual assets.</p>
+            <div class="space-y-2">
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">UI/UX Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Wireframes & intuitive layouts</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">UI/UX Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Wireframing, user flows &amp; hierarchy</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Visual Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Editorial composition & contrast</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Visual Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Editorial contrast, balance &amp; typography</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Graphic Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Poster concepts & event identity</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Graphic Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Event collateral &amp; digital posters</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Presentation Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Structured pitch visual decks</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Presentation Design</span> <span class="text-light-muted dark:text-dark-muted ml-2">Structured pitch visual decks</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
             </div>
           </div>
 
-          <!-- Tools -->
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <h3 class="text-base font-semibold text-light-text dark:text-dark-text mb-1">Tools & Workflow</h3>
-            <p class="text-xs text-light-muted dark:text-dark-muted mb-6">Daily development tools supporting software engineering.</p>
-            <div class="space-y-2.5">
+          <!-- 4. Tools -->
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                <i data-lucide="wrench" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-light-text dark:text-dark-text">Tools &amp; Workflow</h3>
+            </div>
+            <p class="text-xs text-light-muted dark:text-dark-muted mb-5">Software and versioning workflows supporting daily technical practice.</p>
+            <div class="space-y-2">
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">Git</span> <span class="text-light-muted dark:text-dark-muted ml-2">Version control & branching</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">Git</span> <span class="text-light-muted dark:text-dark-muted ml-2">Version control, branching &amp; commits</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">GitHub</span> <span class="text-light-muted dark:text-dark-muted ml-2">Repos, Pages & collaborative tracking</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">GitHub</span> <span class="text-light-muted dark:text-dark-muted ml-2">Collaboration, repos &amp; Pages deployment</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
               <div class="p-3 rounded-xl border border-light-border/70 dark:border-dark-border/70 bg-light-card/50 dark:bg-dark-card/40 flex items-center justify-between text-xs">
-                <div><span class="font-semibold text-light-text dark:text-dark-text">VS Code</span> <span class="text-light-muted dark:text-dark-muted ml-2">Primary development IDE</span></div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-medium">Core Focus</span>
+                <div><span class="font-bold text-light-text dark:text-dark-text">VS Code</span> <span class="text-light-muted dark:text-dark-muted ml-2">Primary customized development IDE</span></div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/10 border border-accent/30 text-accent font-semibold">Core Focus</span>
               </div>
             </div>
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section id="projects" class="py-24 px-6 border-t border-light-border dark:border-dark-border/80">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
-          <span class="w-6 h-px bg-accent"></span>
-          <span>03 / Featured Work</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-light-text dark:text-dark-text mb-12">
-          Things I've been building.
-        </h2>
 
-        <!-- Spotting the At Risk Project Card -->
-        <div class="rounded-3xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface overflow-hidden shadow-md grid grid-cols-1 lg:grid-cols-12 gap-0">
-          <div class="lg:col-span-7 bg-light-card/80 dark:bg-[#0e1017] p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-light-border dark:border-dark-border flex flex-col justify-center">
-            <!-- Simulated Dashboard Mockup -->
-            <div class="rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface/90 overflow-hidden shadow-sm p-5 space-y-4">
-              <div class="flex items-center justify-between text-xs font-mono text-light-muted dark:text-dark-muted border-b border-light-border dark:border-dark-border pb-3">
-                <span class="flex items-center gap-1.5"><i data-lucide="bar-chart-3" class="w-4 h-4 text-accent"></i> Power BI Analytics Engine</span>
-                <span class="text-emerald-500 font-semibold">Active Metrics</span>
-              </div>
-              <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                <div class="p-2.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
-                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted">Risk Index</div>
-                  <div class="text-base font-bold text-light-text dark:text-dark-text mt-0.5">14.2%</div>
-                </div>
-                <div class="p-2.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
-                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted">Attendance</div>
-                  <div class="text-base font-bold text-light-text dark:text-dark-text mt-0.5">88.6%</div>
-                </div>
-                <div class="p-2.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
-                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted">Intervention</div>
-                  <div class="text-base font-bold text-light-text dark:text-dark-text mt-0.5">91%</div>
-                </div>
-              </div>
-              <div class="p-3 rounded-lg bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50 text-[11px] font-mono space-y-1.5">
-                <div class="flex justify-between"><span>Attendance Benchmark (&gt;75%)</span><span class="text-accent font-bold">74%</span></div>
-                <div class="h-2 rounded-full bg-light-border dark:bg-neutral-800 overflow-hidden"><div class="h-full bg-accent rounded-full" style="width: 74%;"></div></div>
-              </div>
+    <!-- 03 // FEATURED PROJECTS -->
+    <section id="projects" class="py-24 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
+              <span class="w-6 h-px bg-accent"></span>
+              <span>03 / Featured Work</span>
             </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-light-text dark:text-dark-text">
+              Things I've been building.
+            </h2>
           </div>
 
+          <p class="text-xs font-mono text-light-muted dark:text-dark-muted max-w-sm">
+            Translating analytical indicators and human interfaces into real-world interactive tools.
+          </p>
+        </div>
+
+        <!-- Featured Project: Spotting the At Risk -->
+        <div class="rounded-3xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-0 mb-8">
+          
+          <!-- Visual Mockup Column (7 cols) -->
+          <div class="lg:col-span-7 bg-light-card/90 dark:bg-[#0c0e15] p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-light-border dark:border-dark-border flex flex-col justify-center">
+            
+            <div class="rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-md overflow-hidden p-5 space-y-4">
+              
+              <!-- Mockup Bar -->
+              <div class="flex items-center justify-between text-xs font-mono text-light-muted dark:text-dark-muted border-b border-light-border dark:border-dark-border pb-3">
+                <span class="flex items-center gap-2 font-semibold text-light-text dark:text-dark-text">
+                  <i data-lucide="bar-chart-3" class="w-4 h-4 text-accent"></i>
+                  <span>Power BI Performance Dashboard</span>
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-500 border border-emerald-500/30 font-semibold">Live Dataset</span>
+              </div>
+
+              <!-- Top KPI Cards -->
+              <div class="grid grid-cols-3 gap-2.5 text-center text-xs">
+                <div class="p-3 rounded-xl bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
+                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted uppercase">Risk Index</div>
+                  <div class="text-lg font-bold text-light-text dark:text-dark-text mt-0.5">14.2%</div>
+                  <div class="text-[9px] text-emerald-500 font-mono mt-0.5">-2.4% vs bench</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
+                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted uppercase">Attendance</div>
+                  <div class="text-lg font-bold text-light-text dark:text-dark-text mt-0.5">88.6%</div>
+                  <div class="text-[9px] text-accent font-mono mt-0.5">&gt; 85% Target</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50">
+                  <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted uppercase">Support</div>
+                  <div class="text-lg font-bold text-light-text dark:text-dark-text mt-0.5">91%</div>
+                  <div class="text-[9px] text-emerald-500 font-mono mt-0.5">Proactive Rate</div>
+                </div>
+              </div>
+
+              <!-- Visual Progress Chart -->
+              <div class="p-4 rounded-xl bg-light-card dark:bg-dark-card border border-light-border/70 dark:border-dark-border/50 text-xs font-mono space-y-2.5">
+                <div class="flex justify-between items-center text-[11px]">
+                  <span class="text-light-text dark:text-dark-text font-medium">Safe Benchmark (&gt;75% Attendance)</span>
+                  <span class="text-accent font-bold">74%</span>
+                </div>
+                <div class="h-2 rounded-full bg-light-border dark:bg-neutral-800 overflow-hidden">
+                  <div class="h-full bg-accent rounded-full" style="width: 74%;"></div>
+                </div>
+
+                <div class="flex justify-between items-center text-[11px] pt-1">
+                  <span class="text-light-text dark:text-dark-text font-medium">Critical Attention (&lt;65%)</span>
+                  <span class="text-amber-500 font-bold">8%</span>
+                </div>
+                <div class="h-2 rounded-full bg-light-border dark:bg-neutral-800 overflow-hidden">
+                  <div class="h-full bg-amber-400 rounded-full" style="width: 8%;"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] font-mono text-light-muted dark:text-dark-muted pt-1">
+                <span>Multi-view Breakdown</span>
+                <span class="text-accent font-semibold">Interactive Filters</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Project Details Column (5 cols) -->
           <div class="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-2 mb-3">
-                <span class="px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider bg-accent/15 text-accent border border-accent/30 font-semibold">PROJECT 01</span>
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-accent/15 text-accent border border-accent/30 font-bold">
+                  PROJECT 01 • FEATURED
+                </span>
                 <span class="text-xs font-mono text-light-muted dark:text-dark-muted">Completed</span>
               </div>
-              <h3 class="text-2xl font-bold text-light-text dark:text-dark-text tracking-tight mb-2">Spotting the At Risk</h3>
+
+              <h3 class="text-2xl font-bold text-light-text dark:text-dark-text tracking-tight mb-2">
+                Spotting the At Risk
+              </h3>
               <p class="text-xs font-mono text-accent mb-4">Interactive Performance Analytics Dashboard</p>
+
               <p class="text-sm text-light-text/90 dark:text-dark-text/90 leading-relaxed mb-6">
                 An interactive analytics dashboard designed to identify at-risk students and employees through performance indicators, attendance, academic data, and other measurable factors.
               </p>
+
               <div class="flex flex-wrap gap-1.5 mb-8">
-                <span class="px-2 py-0.5 rounded text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">Power BI</span>
-                <span class="px-2 py-0.5 rounded text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">Data Analytics</span>
-                <span class="px-2 py-0.5 rounded text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">KPI Indicators</span>
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">Power BI</span>
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">Data Analytics</span>
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-mono border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card text-light-muted dark:text-dark-muted">KPI Indicators</span>
               </div>
             </div>
 
-            <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-light-border dark:border-dark-border">
-              <a href="https://adityaranjandp28-web.github.io/Power-Bi-dashboard/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-accent text-white text-xs font-semibold hover:bg-accent-dark transition-all">
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-6 border-t border-light-border dark:border-dark-border">
+              <a
+                href="https://adityaranjandp28-web.github.io/Power-Bi-dashboard/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-semibold hover:bg-accent-dark transition-all shadow-xs"
+              >
                 <span>Launch Live Dashboard</span>
                 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
               </a>
-              <a href="https://github.com/adityaranjandp28-web" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text text-xs font-semibold hover:border-accent hover:text-accent transition-all">
+
+              <a
+                href="https://github.com/adityaranjandp28-web"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text text-xs font-semibold hover:border-accent hover:text-accent transition-all"
+              >
                 <i data-lucide="github" class="w-3.5 h-3.5"></i>
                 <span>GitHub Repo</span>
               </a>
             </div>
+
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Creative Gallery -->
-    <section id="creative" class="py-24 px-6 border-t border-light-border dark:border-dark-border/80 bg-light-card/30 dark:bg-dark-card/20">
+
+    <!-- 04 // CREATIVE SIDE & PROMINENT DESIGN ARCHIVE -->
+    <section id="creative" class="py-24 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80 bg-light-card/30 dark:bg-dark-card/20">
       <div class="max-w-6xl mx-auto">
+        
         <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
           <span class="w-6 h-px bg-accent"></span>
           <span>04 / Visual Expression</span>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-light-text dark:text-dark-text">
-            Beyond code, I create.
-          </h2>
-          <a href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline">
-            <span>Explore Google Sites Portfolio Archive</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-light-text dark:text-dark-text mb-8">
+          Beyond code, I create.
+        </h2>
+
+        <!-- PROMINENT FEATURED HERO BANNER FOR GOOGLE SITES DESIGN ARCHIVE -->
+        <div class="p-8 sm:p-10 rounded-3xl border-2 border-accent bg-gradient-to-r from-accent/15 via-light-surface to-light-surface dark:from-accent/20 dark:via-dark-surface dark:to-dark-surface shadow-xl mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-mono uppercase tracking-wider font-bold mb-3">
+              <i data-lucide="palette" class="w-3 h-3"></i>
+              <span>Official Creative Portfolio</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-light-text dark:text-dark-text tracking-tight mb-2">
+              Explore the Google Sites Design Archive
+            </h3>
+            <p class="text-sm text-light-muted dark:text-dark-muted leading-relaxed">
+              Curated visual collection of graphic design work, event branding, college poster concepts, typography studies, and UI/UX design experiments.
+            </p>
+          </div>
+
+          <a
+            href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-white font-bold text-sm hover:bg-accent-dark transition-all duration-200 shadow-md hover:shadow-accent/30 hover:scale-102 active:scale-98 shrink-0"
+          >
+            <span>Open Design Archive</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </a>
         </div>
 
+        <!-- Asymmetric Creative Works Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4"><i data-lucide="pen-tool" class="w-5 h-5"></i></div>
-            <div class="text-xs font-mono text-accent mb-1">Graphic Design</div>
-            <h4 class="text-sm font-semibold text-light-text dark:text-dark-text mb-2">Campus Identity & Posters</h4>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">Visual identity and poster concepts for student-club and collegiate event initiatives.</p>
+          
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between hover:border-accent/50 transition-colors shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4">
+                <i data-lucide="pen-tool" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs font-mono text-accent mb-1">Graphic Design</div>
+              <h4 class="text-sm font-bold text-light-text dark:text-dark-text mb-2">Campus Identity &amp; Posters</h4>
+              <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed mb-4">
+                Visual identity and poster concepts for student-club and collegiate event initiatives.
+              </p>
+            </div>
+            <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted pt-3 border-t border-light-border dark:border-dark-border">
+              #Posters #Identity
+            </div>
           </div>
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4"><i data-lucide="layout" class="w-5 h-5"></i></div>
-            <div class="text-xs font-mono text-accent mb-1">UI/UX Concept</div>
-            <h4 class="text-sm font-semibold text-light-text dark:text-dark-text mb-2">Performance Analytics UI</h4>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">High-contrast minimalist interface study focusing on ergonomic data density.</p>
+
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between hover:border-accent/50 transition-colors shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4">
+                <i data-lucide="layout" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs font-mono text-accent mb-1">UI/UX Concept</div>
+              <h4 class="text-sm font-bold text-light-text dark:text-dark-text mb-2">Performance Analytics UI</h4>
+              <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed mb-4">
+                High-contrast minimalist interface study focusing on ergonomic data density.
+              </p>
+            </div>
+            <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted pt-3 border-t border-light-border dark:border-dark-border">
+              #Wireframes #UIUX
+            </div>
           </div>
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4"><i data-lucide="palette" class="w-5 h-5"></i></div>
-            <div class="text-xs font-mono text-accent mb-1">Visual Composition</div>
-            <h4 class="text-sm font-semibold text-light-text dark:text-dark-text mb-2">Geometric Balance Studies</h4>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">Studies in typography, negative space, and visual rhythm across digital media.</p>
+
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between hover:border-accent/50 transition-colors shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4">
+                <i data-lucide="palette" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs font-mono text-accent mb-1">Visual Composition</div>
+              <h4 class="text-sm font-bold text-light-text dark:text-dark-text mb-2">Geometric Balance Studies</h4>
+              <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed mb-4">
+                Studies in typography, negative space, and visual rhythm across digital media.
+              </p>
+            </div>
+            <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted pt-3 border-t border-light-border dark:border-dark-border">
+              #Geometry #Contrast
+            </div>
           </div>
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4"><i data-lucide="presentation" class="w-5 h-5"></i></div>
-            <div class="text-xs font-mono text-accent mb-1">Presentation Design</div>
-            <h4 class="text-sm font-semibold text-light-text dark:text-dark-text mb-2">Technical Pitch Collateral</h4>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">Structured presentation decks crafted for clear visual storytelling.</p>
+
+          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface flex flex-col justify-between hover:border-accent/50 transition-colors shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent mb-4">
+                <i data-lucide="presentation" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs font-mono text-accent mb-1">Presentation Design</div>
+              <h4 class="text-sm font-bold text-light-text dark:text-dark-text mb-2">Technical Pitch Collateral</h4>
+              <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed mb-4">
+                Structured presentation decks crafted for clear visual storytelling and technical impact.
+              </p>
+            </div>
+            <div class="text-[10px] font-mono text-light-muted dark:text-dark-muted pt-3 border-t border-light-border dark:border-dark-border">
+              #Decks #Storytelling
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Education & Journey -->
-    <section id="journey" class="py-24 px-6 border-t border-light-border dark:border-dark-border/80">
+
+    <!-- 05 // EDUCATION & TRAJECTORY -->
+    <section id="journey" class="py-24 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80">
       <div class="max-w-6xl mx-auto">
+        
         <div class="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-3">
           <span class="w-6 h-px bg-accent"></span>
           <span>05 / Trajectory</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-light-text dark:text-dark-text mb-12">
-          Education & Journey
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-light-text dark:text-dark-text mb-12">
+          Education &amp; Journey
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <div class="flex items-center justify-between text-xs font-mono text-accent mb-2">
-              <span>2026 – 2030 (Expected)</span>
-              <span class="px-2 py-0.5 rounded border border-accent/20 bg-accent/10">Undergraduate</span>
+          
+          <!-- Bennett University -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center justify-between text-xs font-mono text-accent mb-3">
+              <span class="font-bold">2026 – 2030 (Expected)</span>
+              <span class="px-2.5 py-0.5 rounded border border-accent/30 bg-accent/10 font-bold">Current Undergraduate</span>
             </div>
-            <h3 class="text-lg font-bold text-light-text dark:text-dark-text mb-1">Bennett University</h3>
-            <p class="text-sm font-medium text-light-text/80 dark:text-dark-text/80 mb-1">Bachelor of Technology — Computer Science and Engineering</p>
+            <h3 class="text-xl font-bold text-light-text dark:text-dark-text mb-1">Bennett University</h3>
+            <p class="text-sm font-semibold text-light-text/80 dark:text-dark-text/80 mb-2">Bachelor of Technology — Computer Science and Engineering</p>
             <p class="text-xs font-mono text-light-muted dark:text-dark-muted mb-4">Greater Noida, Uttar Pradesh, India</p>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">Focusing on object-oriented programming, algorithmic foundations, machine learning systems, and intuitive design architectures.</p>
+            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">
+              Focusing on object-oriented programming, data structures, algorithmic logic, foundations of artificial intelligence, and intuitive interface design.
+            </p>
           </div>
 
-          <div class="p-6 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
-            <div class="flex items-center justify-between text-xs font-mono text-accent mb-2">
-              <span>Completed</span>
-              <span class="px-2 py-0.5 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 font-semibold">Class X: 92%</span>
+          <!-- St. Michael's -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-xs">
+            <div class="flex items-center justify-between text-xs font-mono text-accent mb-3">
+              <span class="font-bold">Completed</span>
+              <span class="px-2.5 py-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 font-bold">Class X: 92%</span>
             </div>
-            <h3 class="text-lg font-bold text-light-text dark:text-dark-text mb-1">St. Michael's High School</h3>
-            <p class="text-sm font-medium text-light-text/80 dark:text-dark-text/80 mb-1">Secondary Schooling (Classes I–X)</p>
+            <h3 class="text-xl font-bold text-light-text dark:text-dark-text mb-1">St. Michael's High School</h3>
+            <p class="text-sm font-semibold text-light-text/80 dark:text-dark-text/80 mb-2">Schooling (Classes I–X)</p>
             <p class="text-xs font-mono text-light-muted dark:text-dark-muted mb-4">Patna, Bihar, India</p>
-            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">Graduated with 92% academic distinction while actively leading creative design and presentation activities.</p>
+            <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed">
+              Graduated with 92% academic distinction while actively participating in school creative design, visual poster making, and presentation initiatives.
+            </p>
           </div>
+
         </div>
+
+        <!-- Microsoft Hackathon & Activities -->
+        <div class="mt-8 p-6 sm:p-8 rounded-3xl border border-light-border dark:border-dark-border bg-light-card/40 dark:bg-dark-card/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent shrink-0">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs font-mono text-accent mb-1">Hackathon &amp; Technical Engagement</div>
+              <h4 class="text-base font-bold text-light-text dark:text-dark-text mb-1">Microsoft-Organized Hackathon Participant</h4>
+              <p class="text-xs text-light-muted dark:text-dark-muted leading-relaxed max-w-xl">
+                Collaborated in a data-focused hackathon to construct an analytics dashboard concept and communicate visual insights to stakeholders.
+              </p>
+            </div>
+          </div>
+
+          <a
+            href="./Aditya_Ranjan_Resume.pdf"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-accent/40 bg-accent/10 hover:bg-accent hover:text-white text-accent text-xs font-bold transition-all shrink-0"
+          >
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Inspect Resume Details</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-28 px-6 border-t border-light-border dark:border-dark-border/80 text-center">
+
+    <!-- 06 // CONTACT SECTION -->
+    <section id="contact" class="py-28 px-6 sm:px-8 border-t border-light-border dark:border-dark-border/80 text-center">
       <div class="max-w-3xl mx-auto flex flex-col items-center">
+        
         <div class="inline-flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest mb-4">
           <span class="w-6 h-px bg-accent"></span>
           <span>06 / Get In Touch</span>
           <span class="w-6 h-px bg-accent"></span>
         </div>
 
-        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-light-text dark:text-dark-text mb-5">
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-light-text dark:text-dark-text mb-5 leading-tight">
           Let's create something meaningful.
         </h2>
 
@@ -505,45 +932,121 @@
           I'm always interested in connecting with people, exploring ideas, and working on interesting projects.
         </p>
 
+        <!-- Direct Email Interaction Box -->
         <div class="w-full max-w-md p-2.5 rounded-2xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface shadow-md flex items-center gap-2 mb-8">
           <div class="flex items-center gap-2 px-3 py-2 text-sm font-mono text-light-text dark:text-dark-text flex-1 truncate">
             <i data-lucide="mail" class="w-4 h-4 text-accent shrink-0"></i>
             <span class="truncate">adityaranjandp28@gmail.com</span>
           </div>
 
-          <a href="mailto:adityaranjandp28@gmail.com" class="px-4 py-2 rounded-xl bg-accent text-white text-xs font-semibold hover:bg-accent-dark transition-all shrink-0">
-            Send Email
+          <a 
+            href="mailto:adityaranjandp28@gmail.com" 
+            class="px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-bold hover:bg-accent-dark transition-all shrink-0"
+          >
+            Email Me
           </a>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center gap-4 mb-14 text-xs font-medium">
-          <a href="https://github.com/adityaranjandp28-web" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:border-accent hover:text-accent transition-all">
+        <!-- Social & Professional Grid -->
+        <div class="flex flex-wrap items-center justify-center gap-3.5 mb-14 text-xs font-medium">
+          <a
+            href="https://github.com/adityaranjandp28-web"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:border-accent hover:text-accent transition-all"
+          >
             <i data-lucide="github" class="w-4 h-4"></i>
             <span>GitHub Profile</span>
+            <i data-lucide="arrow-up-right" class="w-3 h-3 text-light-muted dark:text-dark-muted"></i>
           </a>
-          <a href="https://www.linkedin.com/in/aditya-ranjan-393" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:border-accent hover:text-accent transition-all">
+
+          <a
+            href="https://www.linkedin.com/in/aditya-ranjan-393"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:border-accent hover:text-accent transition-all"
+          >
             <i data-lucide="linkedin" class="w-4 h-4 text-accent"></i>
             <span>LinkedIn Network</span>
+            <i data-lucide="arrow-up-right" class="w-3 h-3 text-light-muted dark:text-dark-muted"></i>
+          </a>
+
+          <a
+            href="./Aditya_Ranjan_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:border-accent hover:text-accent transition-all"
+          >
+            <i data-lucide="file-text" class="w-4 h-4 text-accent"></i>
+            <span>Resume (PDF)</span>
+            <i data-lucide="arrow-up-right" class="w-3 h-3 text-light-muted dark:text-dark-muted"></i>
+          </a>
+
+          <a
+            href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-accent/40 bg-accent/10 text-accent font-semibold hover:bg-accent hover:text-white transition-all"
+          >
+            <i data-lucide="palette" class="w-4 h-4"></i>
+            <span>Google Design Archive</span>
+            <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
           </a>
         </div>
 
         <p class="font-serif italic text-base sm:text-lg text-light-muted dark:text-dark-muted">
           &ldquo;Thanks for stopping by.&rdquo;
         </p>
+
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
   <footer class="border-t border-light-border dark:border-dark-border py-8 px-6 bg-light-surface dark:bg-dark-surface text-xs font-mono">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-light-muted dark:text-dark-muted">
-      <div>&copy; 2026 Aditya Ranjan. Bennett University. All rights reserved.</div>
-      <a href="#" class="hover:text-accent transition-colors">Back to top &uarr;</a>
+      <div>&copy; 2026 Aditya Ranjan • Bennett University • All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="./Aditya_Ranjan_Resume.pdf" target="_blank" class="hover:text-accent transition-colors">Resume</a>
+        <span>•</span>
+        <a href="https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1" target="_blank" class="hover:text-accent transition-colors">Design Archive</a>
+        <span>•</span>
+        <a href="#" class="hover:text-accent transition-colors">Back to top &uarr;</a>
+      </div>
     </div>
   </footer>
 
   <script>
     lucide.createIcons();
+
+    // Mobile Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      const isHidden = mobileDrawer.classList.contains('hidden');
+      if (isHidden) {
+        mobileDrawer.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileDrawer.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close mobile drawer when link clicked
+    mobileDrawer?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
 
     // Theme toggle
     const themeToggle = document.getElementById('themeToggle');
@@ -561,7 +1064,7 @@
       }
     }
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle?.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       updateIcons();
     });
@@ -579,12 +1082,12 @@
     });
 
     const nodes = [];
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 48; i++) {
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
         radius: Math.random() * 1.5 + 1.2
       });
     }
@@ -593,15 +1096,15 @@
       ctx.clearRect(0, 0, width, height);
       const isDark = document.documentElement.classList.contains('dark');
       const strokeColor = '37, 99, 235';
-      const nodeColor = isDark ? '245, 245, 245' : '17, 19, 24';
+      const nodeColor = isDark ? '248, 250, 252' : '15, 23, 42';
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 130) {
-            ctx.strokeStyle = `rgba(${strokeColor}, ${(1 - dist / 130) * 0.15})`;
+          if (dist < 135) {
+            ctx.strokeStyle = `rgba(${strokeColor}, ${(1 - dist / 135) * 0.16})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);

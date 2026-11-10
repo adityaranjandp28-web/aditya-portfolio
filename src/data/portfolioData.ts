@@ -71,6 +71,7 @@ export const portfolioData = {
     github: "https://github.com/adityaranjandp28-web",
     linkedin: "https://www.linkedin.com/in/aditya-ranjan-393",
     googlePortfolio: "https://sites.google.com/view/portfolio1adityaranjan/home?authuser=1",
+    resumePdf: "./Aditya_Ranjan_Resume.pdf",
     profileImage: "/images/aditya.jpg",
   },
 
